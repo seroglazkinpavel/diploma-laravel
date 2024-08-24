@@ -11,9 +11,9 @@
 <body>
 <div class="wrapper">
     @include('includes.header')
-    <main class="content center">
-        @yield('content')
-    </main>
+{{--    <main class="content center">--}}
+{{--        @yield('content')--}}
+{{--    </main>--}}
     @include('includes.footer')
     <script src="{{ asset('script.js') }}"></script>
 </div>

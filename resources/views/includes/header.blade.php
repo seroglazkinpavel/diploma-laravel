@@ -16,7 +16,7 @@
                         <h3>{{ $category->title }}</h3>
                         <p>{{ $category->description }}</p>
                     </div>
-                    <img src="{{ asset($category->image) }}" alt="">
+                    <img src="{{ asset($category->image) }}" alt="" width="2917" height="1710">
                 </div>
                 <a href="{{ route('category.show', ['category' => $category->id]) }}" class="btn">Вперед</a>
             </div>
@@ -27,3 +27,5 @@
 
 </div>
 </header>
+
+

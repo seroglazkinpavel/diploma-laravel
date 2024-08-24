@@ -2,7 +2,7 @@
     @include('includes.menu')
     <div class="top-info center">
         @foreach($categories as $cat)
-{{--            {{ dd($category_id) }}--}}
+
             @if($cat->getAttribute('id') == $category_id)
                 <div class="top-content">
                     <p class="top-content-uptitle">Платформа онлайн-обучения</p>
@@ -13,15 +13,16 @@
                     </p>
                 </div>
                 <div class="container">
-                    <div class="slide-container-category">
+{{--                    <div class="slide-container-category">--}}
                         <div class="slide">
                             <div class="content">
                                 <h3>{{ $cat->title }}</h3>
                                 <p>{{ $cat->description }}</p>
+
                             </div>
                             <img src="{{ asset($cat->image) }}" alt="">
                         </div>
-                    </div>
+{{--                    </div>--}}
                 </div>
             @endif
         @endforeach

@@ -24,7 +24,7 @@
         <hr>
 {{--        @include('layouts.navigation')--}}
         <div>
-            <div>Добро пожаловать {{ Auth::user()->name }}!</div>
+            <h2 class="main_title">Добро пожаловать {{ Auth::user()->name }}!</h2>
 {{--            <x-dropdown-link :href="route('profile.edit')">--}}
 {{--                {{ __('Profile') }}--}}
 {{--            </x-dropdown-link>--}}

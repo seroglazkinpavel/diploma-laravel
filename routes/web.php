@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LessonController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\PracticeController;
@@ -42,6 +43,7 @@ Route::get('category/{category}', [CategoryController::class, 'show'])->name('ca
 Route::get('menu/contacts', [MenuController::class, 'index'])->name('menu.contact');
 
 Route::get('search', [SearchController::class, 'index'])->name('search');
+Route::get('internship', [LessonController::class, 'internship'])->name('internship');
 
 Route::get('practice/{post}', [PracticeController::class, 'show'])->name('practice.show');
 Route::post('practice/{post}/estimation', [PracticeController::class, 'estimation'])->name('practice.estimation');

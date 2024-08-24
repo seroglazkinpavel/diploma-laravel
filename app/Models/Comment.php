@@ -10,16 +10,16 @@ use Illuminate\Support\Facades\DB;
 class Comment extends Model
 {
     use HasFactory;
-    protected $table = 'comments';
+    protected $table = 'informations';
     protected $guarded = false;
 
     public function getPostItemById(int $id): mixed
     {
-        return DB::table('comments')
-            ->join('posts', 'posts.id', '=', 'comments.post_id')
-            ->join('users', 'users.id', '=', 'comments.user_id')
+        return DB::table('informations')
+            ->join('posts', 'posts.id', '=', 'informations.post_id')
+            ->join('users', 'users.id', '=', 'informations.user_id')
             //->where('users.name')
-            ->where('comments.post_id', '=', $id)
+            ->where('informations.post_id', '=', $id)
             //->select('users.name')
             ->get();
     }

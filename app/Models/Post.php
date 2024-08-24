@@ -79,7 +79,8 @@ class Post extends Model
 
         return [
             'title' => $this->title,
-            'author' => $this->author
+            'author' => $this->author,
+            'description' => $this->description,
             ];
     }
 
