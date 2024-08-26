@@ -84,7 +84,7 @@
             color: #9c9c9c;
         }
         .lesson-course-category {
-            margin-top: 100px;
+            /*margin-top: 100px;*/
             margin-bottom: 80px;
         }
         .lesson-course-category hr {
