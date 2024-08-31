@@ -2,7 +2,7 @@
     @foreach ($breadcrumbs as $breadcrumb)
         @if (!is_null($breadcrumb->url) && !$loop->last)
             <li><a href="{{ $breadcrumb->url }}">{{ $breadcrumb->title }}</a></li>
-            <li class="separator"> > </li>
+            <li class="separator"><strong> → </strong></li>
         @else
             <li class="active">{{ $breadcrumb->title }}</li>
 

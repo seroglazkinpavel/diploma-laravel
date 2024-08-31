@@ -14,9 +14,14 @@ Breadcrumbs::for('about', function ($trail) {
     $trail->push('About', route('about'));
 });
 // Home > Blog
-Breadcrumbs::for('blog', function ($trail) {
+
+Breadcrumbs::for('reviews', function ($trail) {
     $trail->parent('home');
-    $trail->push('Blog', route('blog'));
+    $trail->push('Отзывы', route('reviews'));
+});
+Breadcrumbs::for('contact', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Контакты', route('feedback.index'));
 });
 // Home > [Category]
 //Breadcrumbs::for('category.show', function ($breadcrumbs, $category) {

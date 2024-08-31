@@ -13,7 +13,7 @@
                 <x-alert :message="$error" type="danger"></x-alert>
             @endforeach
         @endif
-        <form method="post" action="{{ route('news.update', ['post' => $post]) }}">
+        <form method="post" action="{{ route('news.update', ['post' => $post]) }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="form-group mb-3">

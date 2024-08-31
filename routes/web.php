@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\PracticeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SearchController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
@@ -36,17 +38,24 @@ require __DIR__.'/auth.php';
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('home/{post}', [HomeController::class, 'show'])->name('home.show');
 Route::post('home/{post}/comment', [HomeController::class, 'comment'])->name('home.comment');
-Route::post('home/{post}/like', [HomeController::class, 'like'])->name('home.like');
+//Route::post('home/{post}/like', [HomeController::class, 'like'])->name('home.like');
 
 Route::get('category/{category}', [CategoryController::class, 'show'])->name('category.show');
 
-Route::get('menu/contacts', [MenuController::class, 'index'])->name('menu.contact');
+//Route::get('menu/contacts', [MenuController::class, 'index'])->name('menu.contact');
+Route::get('/feedback', [FeedbackController::class, 'index'])->name('feedback.index');
+Route::post('/feedback', [FeedbackController::class, 'send'])->name('feedback.send');
 
 Route::get('search', [SearchController::class, 'index'])->name('search');
 Route::get('internship', [LessonController::class, 'internship'])->name('internship');
 
 Route::get('practice/{post}', [PracticeController::class, 'show'])->name('practice.show');
 Route::post('practice/{post}/estimation', [PracticeController::class, 'estimation'])->name('practice.estimation');
+
+Route::get('reviews', [ReviewController::class, 'index'])->name('reviews');
+Route::post('reviews/store', [ReviewController::class, 'store'])
+    ->name('reviews.store');
+
 //Route::group(['prefix' => 'admin', 'as' => 'admin.'], static function () {
 //    Route::get('/categories', [AdminCategoryController::class, 'index'])
 //        ->name('categories.index');

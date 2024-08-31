@@ -17,13 +17,13 @@
                                 <a href="" class="menu-link">О нас</a>
                             </li>
                             <li class="menu-item">
-                                <a href="" class="menu-link">Отзывы</a>
+                                <a href="{{ route('reviews') }}" class="menu-link">Отзывы</a>
                             </li>
                             <li class="menu-item">
                                 <a href="" class="menu-link">Статьи</a>
                             </li>
                             <li class="menu-item">
-                                <a href="{{ route('menu.contact') }}" class="menu-link">Контакт</a>
+                                <a href="{{ route('feedback.index') }}" class="menu-link">Контакты</a>
                             </li>
 
                         </ul>
@@ -55,9 +55,9 @@
                                 </li>
                                 <li class="menu-list-item"><a href="#">Услуги</a></li>
                                 <li class="menu-list-item"><a href="#">О нас</a></li>
-                                <li class="menu-list-item"><a href="#">Отзывы</a></li>
+                                <li class="menu-list-item"><a href="{{ route('reviews') }}">Отзывы</a></li>
                                 <li class="menu-list-item"><a href="#">Статьи</a></li>
-                                <li class="menu-list-item"><a href="#">Контакты</a></li>
+                                <li class="menu-list-item"><a href="{{ route('feedback.index') }}">Контакты</a></li>
                             </ul>
                         </nav>
                         <div class="header-right-item headerButton"><img src="{{ asset('images/entrance.png') }}" alt=""></div>

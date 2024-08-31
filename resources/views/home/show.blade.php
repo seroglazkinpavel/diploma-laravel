@@ -157,7 +157,7 @@
                     <h2 class="section-title mb-5" data-aos="fade-up">Отправить комментарий</h2>
                     <form class="form-comment" action="{{ route('home.comment', $lesson->id) }}" method="post">
                         @csrf
-                        <div class="form-group col-12" data-aos="fade-up">
+                        <div class="form-group-cjmment col-12" data-aos="fade-up">
                             <label for="comment" class="sr-only">Comment</label>
                             <textarea name="message" id="comment" class="form-control" placeholder="Напишите комментарий!"cols="25" rows="5"></textarea>
                         </div>

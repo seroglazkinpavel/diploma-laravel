@@ -86,6 +86,15 @@ class NewsController extends Controller
     public function update(Edit $request, Post $post)
     {
         $post = $post->fill($request->validated());  //fill-заполнять
+//        if ($request->hasFile('image')) {
+//            $file = $request->file('image');
+//
+//            // файл пользователя расширение и имя
+//            $extension = $file->getClientOriginalExtension();
+//            $file =  $file->getClientOriginalName();
+//
+//            $file->storeAs('news', $file->hashName(), 'public');
+//        }
         if ($post->save()) {
             return redirect()->route('news.index')->with('success', 'Запись успешно сохранена');
         }

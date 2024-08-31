@@ -19,11 +19,11 @@
                     <hr>
                 </div>
                 <ul>
-                    <li><a href="#">О нас</a></li>
                     <li><a href="#">Услуги</a></li>
-                    <li><a href="#">Отзывы</a></li>
-                    <li><a href="{{ route('menu.contact') }}">Контакты</a></li>
+                    <li><a href="#">О нас</a></li>
+                    <li><a href="{{ route('reviews') }}">Отзывы</a></li>
                     <li><a href="">Статьи</a></li>
+                    <li><a href="{{ route('feedback.index') }}">Контакты</a></li>
                 </ul>
             </div>
             <div class="footer_item">
@@ -34,7 +34,7 @@
                 <ul>
                     <li><a href="{{ route('login') }}">Войти</a></li>
                     <li><a href="{{ route('register') }}">Регистрация</a></li>
-                    <li><a href="{{ route('menu.contact') }}">Обратная связь</a></li>
+                    <li><a href="{{ route('feedback.index') }}">Обратная связь</a></li>
                 </ul>
             </div>
         </div>
