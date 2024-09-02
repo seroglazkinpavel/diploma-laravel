@@ -54,7 +54,9 @@ class PracticeController extends Controller
         $data['radio'] = $request->payment;
         $data['message'] = $request->message;
 
-        Estimation::create($data);
-        return redirect()->route('practice.show', $post->id);
+        if (Estimation::create($data)) {
+            return redirect()->route('practice.show', $post->id)->with('success', 'Запись успешно сохранена');
+        }
+        return back()->with('error', 'Не удалось добавить запись');
     }
 }

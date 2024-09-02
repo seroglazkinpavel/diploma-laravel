@@ -4,12 +4,9 @@
                 <div class="header-section">
                     <div class="header-section-left">
                         <div class="header-left-logo">
-                            <a href="http://localhost:7777" class="menu-link"><img src="http://localhost:7777/images/logo.png" alt="logo"></a>
+                            <a href="{{ route('home') }}" class="menu-link"><img src="{{ asset('images/logo.png') }}" alt="logo"></a>
                         </div>
                         <ul class="menu-list">
-{{--                            <li class="menu-item">--}}
-{{--                                <a href="{{ route('home') }}" class="menu-link"><img src="{{ asset('images/logo.png') }}" alt="logo"></a>--}}
-{{--                            </li>--}}
                             <li class="menu-item">
                                 <a href="" class="menu-link">Услуги</a>
                             </li>

@@ -23,6 +23,11 @@
                 <img src="{{ asset($exercise->image) }}" alt="">
             </div>
         @endforeach
+        <ul>
+            @foreach ($errors->all() as $message)
+                <li style="color:red;">{{ $message }}</li>
+            @endforeach
+        </ul>
         @auth()
         <div class="button">
             <a href="#" id="open_pop_up">Оценить урок</a>
@@ -517,32 +522,32 @@
             formSelect();
         });
         /* === Start Обработка формы === */
-        $(function() {
-            // при нажатию на кнопку с типом submit
-            $('#myForm input[type="submit"]').click(function(e) {
-                // отменяем стандартное поведение браузера
-                e.preventDefault();
-                // переменная, которая будет содержать данные серилизации
-                var $data;
-
-                $data = $(this).parent('form').serializeArray();
-                console.log($data);
-                // для отправки данных будем использовать технологию ajax
-                //   url - адрес скрипта, с помощью которого будем обрабатывать форму на сервере
-                //   type - метод отправки запроса (POST)
-                //   data - данные, которые необходимо передать серверу
-                //   success - функция, которая будет вызвана, когда ответ прийдёт с сервера
-                $.ajax({
-                    url: $(this).parent('form').attr('action'),
-                    type: 'post',
-                    data: $data,
-                    success: function(result) {
-                        //popUp.classList.remove('active');
-                        location.reload();
-                    }
-                })
-            });
-        });
+        // $(function() {
+        //     // при нажатию на кнопку с типом submit
+        //     $('#myForm input[type="submit"]').click(function(e) {
+        //         // отменяем стандартное поведение браузера
+        //         e.preventDefault();
+        //         // переменная, которая будет содержать данные серилизации
+        //         var $data;
+        //
+        //         $data = $(this).parent('form').serializeArray();
+        //         console.log($data);
+        //         // для отправки данных будем использовать технологию ajax
+        //         //   url - адрес скрипта, с помощью которого будем обрабатывать форму на сервере
+        //         //   type - метод отправки запроса (POST)
+        //         //   data - данные, которые необходимо передать серверу
+        //         //   success - функция, которая будет вызвана, когда ответ прийдёт с сервера
+        //         $.ajax({
+        //             url: $(this).parent('form').attr('action'),
+        //             type: 'post',
+        //             data: $data,
+        //             success: function(result) {
+        //                 //popUp.classList.remove('active');
+        //                 location.reload();
+        //             }
+        //         })
+        //     });
+        // });
 
         /* === End Обработка формы === */
 
