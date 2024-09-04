@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Estimation\Create;
 use App\Models\Category;
 use App\Models\Estimation;
 use App\Models\Post;
@@ -40,23 +41,35 @@ class PracticeController extends Controller
 
     public function estimation(Post $post, Request $request)
     {
-        //dd($_REQUEST);
-        //dd($request->message);
-        $fields = $request->all();
-        //dd($data);
-        //$data = $request->validata();
+        // Валидация полей формы
+//        $request->validate([
+//            'user_id' => ['required', 'integer', 'exists:user,id'],
+//            'post_id' => ['required', 'integer', 'exists:post,id'],
+//            'option' => ['required', 'string'],
+//            'radio' => ['required', 'string'],
+//            'message' => ['nullable', 'string'],
+//        ]);
         //$data = $request->only(['post_id', 'message']);
-
-        //$data = '';
+//        $validated = $request->validated();
+//        dd($validated);
+//        $estimation = new Estimation($validated);
+//        $estimation['user_id'] = auth()->user()->id;
+//        $estimation['post_id'] = $post->id;
         $data['user_id'] = auth()->user()->id;
         $data['post_id'] = $post->id;
         $data['option'] = $request->mySelect;
         $data['radio'] = $request->payment;
         $data['message'] = $request->message;
-
-        if (Estimation::create($data)) {
-            return redirect()->route('practice.show', $post->id)->with('success', 'Запись успешно сохранена');
+        $estimation = new Estimation($data);
+        if($estimation->getAttribute('option') === null and $estimation->getAttribute('radio') === null) {
+            return redirect()->route('practice.show', $post->id)->with('error', 'Не дали оценку!');
         }
-        return back()->with('error', 'Не удалось добавить запись');
+//        if (Estimation::create($data)) {
+//            return redirect()->route('practice.show', $post->id)->with('success', 'Запись успешно сохранена!');
+//        }
+        if ($estimation->save()) {
+            return redirect()->route('practice.show', $post->id)->with('success', 'Запись успешно сохранена!');
+        }
+        return back()->with('error', 'Не удалось добавить запись.');
     }
 }

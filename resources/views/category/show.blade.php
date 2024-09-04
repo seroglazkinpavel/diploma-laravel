@@ -16,8 +16,6 @@
                     @endif
                 </h1>
 
-
-
         <div class="category-course">
             <div class="category-course-content">
                 <h2 class="category-course-title">Как будет проходить курс?</h2>
@@ -63,15 +61,32 @@
             </div>
             @endif
             @endforeach
-            <ul class="category-course-list">
-                <h2 class="title-sidebar-right"><strong>Содерхание программы</strong></h2>
-                @foreach($posts as $post)
-                    <li class="category-course-item">
-                        <a class="category-nav-link @if(request()->routeIs('home.*', $post->id)) active @endif" href="{{ route('home.show', $post->id) }}">{{ $post->title }}</a>
+{{--            <ul class="category-course-list">--}}
+{{--                <h2 class="title-sidebar-right"><strong>Содерхание программы</strong></h2>--}}
+{{--                @foreach($posts as $post)--}}
+{{--                    <li class="category-course-item">--}}
+{{--                        <a class="category-nav-link @if(request()->routeIs('home.*', $post->id)) active @endif" href="{{ route('home.show', $post->id) }}">{{ $post->title }}</a>--}}
+{{--                    </li>--}}
+{{--                    <div class="practice-lesson">--}}
+{{--                        <a href="{{ route('practice.show', $post->id) }}"><strong>Практика</strong></a>--}}
+{{--                    </div>--}}
+{{--                @endforeach--}}
+{{--            </ul>--}}
+            <h2 class="title-course"><strong>Содерхание программы</strong></h2>
+            <ul class="course-list">
+                @foreach($posts as $item)
+                    <li class="course-item">
+                        <a class="@if(request()->routeIs('home.show.*')) active @endif" href="{{ route('home.show', $item->id) }}">{{ $item->title }}</a>
                     </li>
-                    <div class="practice-lesson">
-                        <a href="{{ route('practice.show', $post->id) }}"><strong>Практика</strong></a>
+                    <div class="practice">
+                        <p>Практика</p>
+{{--                        @if (!empty($practice->posts_id))--}}
+{{--                            <a href="{{ route('practice.show', $practice->posts_id) }}">Практика</a>--}}
+{{--                        @else--}}
+{{--                            <p>Практика в разработке</p>--}}
+{{--                        @endif--}}
                     </div>
+
                 @endforeach
             </ul>
         </div>
@@ -80,6 +95,9 @@
 @endsection
 @push('css')
     <style>
+        .course-list-none {
+            display: none
+        }
         .active {
             color: #9c9c9c;
         }
@@ -147,6 +165,24 @@
         .category-img-consultation:hover {
             background: url('../images/consultation_1.png') no-repeat;
             background-size: 100%;
+        }
+        @media (max-width: 768px) {
+            .category-course-block {
+                flex-wrap: wrap;
+            }
+            .category-course-content-item {
+                width: 45%;
+            }
+            /*.category-course-list {*/
+            /*    display: none;*/
+            /*}*/
+            /*.course-list-none {*/
+            /*    display: flex;*/
+            /*    !*overflow-x: auto;*!*/
+            /*}*/
+            /*.category-course {*/
+            /*    flex-direction: column;*/
+            /*}*/
         }
     </style>
 @endpush

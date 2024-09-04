@@ -15,7 +15,7 @@
 {{--                @endforeach--}}
 {{--            @endif--}}
             @if (session('success'))
-                <div class="alert alert-success" role="alert">
+                <div class="alert alert-success" role="alert" style="color: green;">
                     {{ session('success') }}
                 </div>
             @endif

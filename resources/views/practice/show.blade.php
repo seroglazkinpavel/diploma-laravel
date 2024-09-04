@@ -23,11 +23,26 @@
                 <img src="{{ asset($exercise->image) }}" alt="">
             </div>
         @endforeach
-        <ul>
-            @foreach ($errors->all() as $message)
-                <li style="color:red;">{{ $message }}</li>
-            @endforeach
-        </ul>
+
+        @if (session('success'))
+            <div class="alert alert-success" role="alert">
+                <strong>{{ session('success') }}</strong>
+            </div>
+        @else
+            <div class="alert alert-error" role="alert">
+                 <strong>{{ session('error') }}</strong>
+            </div>
+        @endif
+{{--        @if ($errors->any())--}}
+{{--            <div class="alert alert-danger" role="alert">--}}
+{{--                <ul>--}}
+{{--                    @foreach ($errors->all() as $error)--}}
+{{--                        <li>{{ $error }}</li>--}}
+{{--                    @endforeach--}}
+{{--                </ul>--}}
+{{--            </div>--}}
+{{--        @endif--}}
+
         @auth()
         <div class="button">
             <a href="#" id="open_pop_up">Оценить урок</a>
@@ -428,6 +443,45 @@
             width: 100%;
         }
         /* End Радио кнопки */
+        /* Start message and error */
+        .alert-success {
+            text-align: center;
+            color: #2ca02c;
+            margin-top: 15px;
+        }
+        .alert-error {
+            text-align: center;
+            color: #9D2334;
+            margin-top: 15px;
+        }
+        /* End message and error */
+        @media (max-width: 425px) {
+            .pop_up_body {
+                padding:50px 15px;
+            }
+        }
+        @media (max-width: 375px) {
+            .icon-1, .icon-2, .icon-3, .ison-4  {
+                max-width: 70px;
+
+            }
+            .form-group {
+                margin-left: 0;
+            }
+            .form-control, .col-12, .form-radio {
+                max-width: 310px;
+                margin: 0 auto;
+            }
+            .pop_up_close {
+                right: 40px;
+            }
+            .pop_up_body p {
+                font-size: 26px;
+            }
+            .pop_up_body .form-submit {
+                margin: 30px auto 0px;
+            }
+        }
     </style>
 @endpush
 @push('js')

@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\DB;
 class Comment extends Model
 {
     use HasFactory;
+
+//    protected $fillable = [
+//        'post_id',
+//        'message',
+//    ];
     protected $table = 'comments';
     protected $guarded = false;
 

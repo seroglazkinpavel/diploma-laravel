@@ -76,7 +76,15 @@
                     <p>&lt;/script&gt;</p>
                 </div>
             </div>
-
+            @if (session('success'))
+                <div class="alert alert-success" role="alert">
+                    <strong>{{ session('success') }}</strong>
+                </div>
+            @else
+                <div class="alert alert-error" role="alert">
+                    <strong>{{ session('error') }}</strong>
+                </div>
+            @endif
             @auth()
                 <div class="button">
                     <a href="#" id="open_pop_up">Оценить урок</a>
@@ -85,7 +93,7 @@
                     <div class="pop_up_conteiner">
                         <div class="pop_up_body" id="pop_up_body">
                             <p>Оцените качество урока</p>
-                            <form action="{{ route('practice.estimation', $lesson->id) }}" name="myForm" id="myForm" method="post">
+                            <form action="{{ route('home.estimation', $lesson->id) }}" name="myForm" id="myForm" method="post">
                                 @csrf
                                 <select id="select-form" class="select-events" size="4" name="mySelect">
                                     <option value="Отлично" class="icon-1"></option>
@@ -155,6 +163,15 @@
             @auth()
                 <div class="comment-section">
                     <h2 class="section-title mb-5" data-aos="fade-up">Отправить комментарий</h2>
+                    @if (session('success-comment'))
+                        <div class="alert alert-success" role="alert">
+                            <strong>{{ session('success-comment') }}</strong>
+                        </div>
+                    @else
+                        <div class="alert alert-error" role="alert">
+                            <strong>{{ session('error-comment') }}</strong>
+                        </div>
+                    @endif
                     <form class="form-comment" action="{{ route('home.comment', $lesson->id) }}" method="post">
                         @csrf
                         <div class="form-group-cjmment col-12" data-aos="fade-up">
@@ -169,7 +186,7 @@
             @endauth
 
         </div>
-            <h2 class="title-course"><strong>Содерхание программы</strong></h2>
+        <h2 class="title-course"><strong>Содерхание программы</strong></h2>
         <ul class="course-list">
             @foreach($posts as $item)
 {{--                <li class="category-course-item {{ request()->is('home.show*') ? 'active' : '' }}">--}}
@@ -427,63 +444,63 @@
             width: 90px;
         }
 
-        /*.icon-1:hover {*/
-        /*    !*background: url('../images/smiley.png') no-repeat;*!*/
-        /*    background: url('../images/smiley_8.png') no-repeat;*/
-        /*}*/
+        .icon-1:hover {
+            background: url('../images/smiley.png') no-repeat;
 
-        /*.icon-2:hover {*/
-        /*    !*background: url('../images/smiley_2.png') no-repeat;*!*/
-        /*    background: url('../images/smiley_10.png') no-repeat;*/
-        /*}*/
+        }
 
-        /*.icon-3:hover {*/
-        /*    !*background: url('../images/smiley_4.png') no-repeat;*!*/
-        /*    background: url('../images/smiley_12.png') no-repeat;*/
-        /*}*/
+        .icon-2:hover {
+            background: url('../images/smiley_2.png') no-repeat;
 
-        /*.icon-4:hover {*/
-        /*    !*background: url('../images/smiley_6.png') no-repeat;*!*/
-        /*    background: url('../images/smiley_14.png') no-repeat;*/
-        /*}*/
+        }
+
+        .icon-3:hover {
+            background: url('../images/smiley_4.png') no-repeat;
+
+        }
+
+        .icon-4:hover {
+            background: url('../images/smiley_6.png') no-repeat;
+
+        }
 
         .icon-1
         {
-            /*background: url('../images/smiley_1.png') no-repeat;*/
-            /*background-size: 64px;*/
-            background: url('../images/smiley_8.png') no-repeat;
-            background-size: 90px;
-            /*padding-left: 20px;*/
+            background: url('../images/smiley_1.png') no-repeat;
+            background-size: 64px;
+            /*background: url('../images/smiley_8.png') no-repeat;*/
+            /*background-size: 90px;*/
+            padding-left: 20px;
             background-position: 0 1px;
         }
 
         .icon-2
         {
-            /*background: url('../images/smiley_3.png') no-repeat;*/
-            /*background-size: 64px;*/
-            background: url('../images/smiley_10.png') no-repeat;
-            background-size: 90px;
-            /*padding-left: 20px;*/
+            background: url('../images/smiley_3.png') no-repeat;
+            background-size: 64px;
+            /*background: url('../images/smiley_10.png') no-repeat;*/
+            /*background-size: 90px;*/
+            padding-left: 20px;
             /*background-position: 0 1px;*/
         }
 
         .icon-3
         {
-            /*background: url('../images/smiley_5.png') no-repeat;*/
-            /*background-size: 64px;*/
-            background: url('../images/smiley_12.png') no-repeat;
-            background-size: 90px;
-            /*padding-left: 20px;*/
+            background: url('../images/smiley_5.png') no-repeat;
+            background-size: 64px;
+            /*background: url('../images/smiley_12.png') no-repeat;*/
+            /*background-size: 90px;*/
+            padding-left: 20px;
             /*background-position: 0 1px;*/
         }
 
         .icon-4
         {
-            /*background: url('../images/smiley_7.png') no-repeat;*/
-            /*background-size: 64px;*/
-            background: url('../images/smiley_14.png') no-repeat;
-            background-size: 90px;
-            /*padding-left: 20px;*/
+            background: url('../images/smiley_7.png') no-repeat;
+            background-size: 64px;
+            /*background: url('../images/smiley_14.png') no-repeat;*/
+            /*background-size: 90px;*/
+            padding-left: 20px;
             /*background-position: 0 1px;*/
         }
 
@@ -556,6 +573,18 @@
             width: 100%;
         }
         /* End Радио кнопки */
+        /* Start message and error */
+        .alert-success {
+            text-align: center;
+            color: #2ca02c;
+            margin-top: 15px;
+        }
+        .alert-error {
+            text-align: center;
+            color: #9D2334;
+            margin-top: 15px;
+        }
+        /* End message and error */
         @media (max-width: 768px) {
             .plan {
                 float: none;
@@ -570,7 +599,33 @@
                 font-size: 24px;
             }
         }
+        @media (max-width: 425px) {
+            .pop_up_body {
+                padding:50px 15px;
+            }
+        }
+        @media (max-width: 375px) {
+            .icon-1, .icon-2, .icon-3, .ison-4  {
+                max-width: 70px;
 
+            }
+            .form-group {
+                margin-left: 0;
+            }
+            .form-control, .col-12, .form-radio {
+                max-width: 310px;
+                margin: 0 auto;
+            }
+            .pop_up_close {
+                right: 40px;
+            }
+            .pop_up_body p {
+                font-size: 26px;
+            }
+            .pop_up_body .form-submit {
+                margin: 30px auto 0px;
+            }
+        }
     </style>
 @endpush
 @push('js')
@@ -629,7 +684,7 @@
             return ($(this).val() == '4');
         }).addClass('icon-4');
         // Добавляем стили, чтобы у списка не было видно полосы прокрутки
-        select.css({ height: '90px', overflow: 'hidden', zIndex: '40000', padding:0 });
+        select.css({ height: '70px', overflow: 'hidden', zIndex: '40000', padding:0 });
 
         // Определяем обработчик на событие ухода мышки с области элемента
         select.on('mouseleave', function () {

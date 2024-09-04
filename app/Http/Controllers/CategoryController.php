@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function show($category)
+    public function show($category, Post $post)
     {
         //dd($category);
         $posts_category = app(Category::class);
@@ -20,12 +20,14 @@ class CategoryController extends Controller
         //dd($category_id);
         $title = $posts_category->getCategoryTitle($category)[0];
         $categories = Category::all();
+        $practice = DB::table('practice')->where('posts_id', $post)->first();
         return view('category.show', [
             //'posts' => $posts_category->getCategoryItemById($category),
             'posts' => $posts,
             'categories' => $categories,
             'category_id' => $category_id,
             'title' => $title,
+            'practice' => $practice,
         ]);
     }
 

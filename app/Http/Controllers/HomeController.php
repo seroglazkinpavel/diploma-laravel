@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Comment;
+use App\Models\Estimation;
 use App\Models\Plan;
 use App\Models\Post;
 use Illuminate\Contracts\View\View;
@@ -61,16 +62,46 @@ class HomeController extends Controller
 
     public function comment(Post $post, Request $request)
     {
-        //$data = $request->validata();
+        // Валидация полей формы
+//        $data = $request->validate([
+//            'posts_id' => ['required', 'integer', 'exists:posts,id'],
+//            'message' => ['required', 'string', 'max:500'],
+//        ]);
+//        dd($data);
         $data = $request->only(['post_id', 'message']);
         $data['user_id'] = auth()->user()->id;
         $data['post_id'] = $post->id;
-        Comment::create($data);
-        return redirect()->route('home.show', $post->id);
+//        Comment::create($data);
+//        return redirect()->route('home.show', $post->id);
+        $comment = new Comment($data);
+        if ($comment->getAttribute('message') === null) {
+            return redirect()->route('home.show', $post->id)->with('error-comment', 'Не добавили комментарий!');
+        }
+        if ($comment->save()) {
+            return redirect()->route('home.show', $post->id)->with('success-comment', 'Запись успешно сохранена!');
+        }
+        return back()->with('error', 'Не удалось добавить запись.');
     }
 
-    public function like()
+    public function estimation(Post $post, Request $request)
     {
-        return view('home.like');
+
+        $data['user_id'] = auth()->user()->id;
+        $data['post_id'] = $post->id;
+        $data['option'] = $request->mySelect;
+        $data['radio'] = $request->payment;
+        $data['message'] = $request->message;
+        $estimation = new Estimation($data);
+        if ($estimation->getAttribute('option') === null and $estimation->getAttribute('radio') === null) {
+            return redirect()->route('home.show', $post->id)->with('error', 'Не дали оценку!');
+        }
+        if ($estimation->save()) {
+            return redirect()->route('home.show', $post->id)->with('success', 'Запись успешно сохранена!');
+        }
+        return back()->with('error', 'Не удалось добавить запись.');
     }
+//    public function like()
+//    {
+//        return view('home.like');
+//    }
 }

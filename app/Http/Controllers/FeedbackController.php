@@ -35,10 +35,10 @@ class FeedbackController extends Controller
         // В метод Mail::to первым аргументом передаем почту куда будет отправка письма,
         // вторым методом передаем класс отправки почты в который передаем аргументом
         // объект с данными формы $data который попадет в конструктор класса FeedbackMailer
-        Mail::to($data->email)->send(new FeedbackMailer($data));
+        Mail::to('seroglazkinpavel@yandex.ru')->send(new FeedbackMailer($data));
         // Редирект через имя роута на ту же страницу с формой
         return redirect()->route('feedback.index')
             // Вывод сообщения
-            ->with('success', 'Ваше сообщение успешно отправлено');
+            ->with('success', 'Ваше сообщение успешно отправлено!');
     }
 }

@@ -38,7 +38,7 @@ require __DIR__.'/auth.php';
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('home/{post}', [HomeController::class, 'show'])->name('home.show');
 Route::post('home/{post}/comment', [HomeController::class, 'comment'])->name('home.comment');
-//Route::post('home/{post}/like', [HomeController::class, 'like'])->name('home.like');
+Route::post('home/{post}/estimation', [HomeController::class, 'estimation'])->name('home.estimation');
 
 Route::get('category/{category}', [CategoryController::class, 'show'])->name('category.show');
 
