@@ -1,9 +1,10 @@
 <?php
 
+//use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\MenuController;
+//use App\Http\Controllers\MenuController;
 use App\Http\Controllers\PracticeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReviewController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\SearchController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\CommentController as AdminCommentController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\PlanController as AdminPlanController;
 use App\Http\Controllers\Admin\PracticeController as AdminPracticeController;
@@ -125,6 +127,9 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
         ->name('news.update');
     Route::delete('news/{post}', [AdminNewsController::class, 'destroy'])->name('news.destroy');
     //Route::get('/news/{id}', [AdminNewsController::class, 'show']);
+
+    Route::get('/comment', [AdminCommentController::class, 'index'])
+        ->name('comment.index');
 });
 
 Route::post('/logout', [loginController::class, 'destroy'])->middleware('auth')->name('logout');

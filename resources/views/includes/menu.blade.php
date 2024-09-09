@@ -57,7 +57,7 @@
                                 <li class="menu-list-item"><a href="{{ route('feedback.index') }}">Контакты</a></li>
                             </ul>
                         </nav>
-                        <div class="header-right-item headerButton"><img src="{{ asset('images/entrance.png') }}" alt=""></div>
+                        <div class="header-right-item headerButton"><img src="{{ asset('images/entrance.png') }}" width="13" height="15" alt="entrance"></div>
                         <div class="header-right-item headerButton">
                             @if (empty(Auth::user()->name))
                                 <a class="menu-link" href="{{ route('login') }}">Вход \ </a><a class="menu-link" href="{{ route('register') }}">регистрация</a>

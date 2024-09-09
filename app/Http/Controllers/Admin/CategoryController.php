@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Categories\Create;
 use App\Http\Requests\Admin\Categories\Edit;
 use App\Models\Category;
+use App\Services\Contracts\ContractCategory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 // use Illuminate\View\View;
@@ -39,10 +40,15 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Create $request)
+    public function store(Create $request, ContractCategory $contractCategory)
     {
-        //$data = $request->only(['title', 'description', 'image']);
-        $category = new Category($request->validated());
+        $validated = $request->validated();
+
+        if ($request->hasFile('image')) {
+            $validated['image'] = $contractCategory->create($request->file('image'));
+        }
+
+        $category = new Category($validated);
 
         if ($category->save()) {
             return redirect()->route('categories.index')->with('success', 'Запись успешно сохранена');
@@ -71,11 +77,14 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Edit $request, Category $category)
+    public function update(Edit $request, Category $category, ContractCategory $contractCategory)
     {
-        //dd($request->validated());
-        //$data = $request->only(['title', 'description', 'image']);
-        $category->fill($request->validated());
+        $validated = $request->validated();
+        if ($request->hasFile('image')) {
+            $validated['image'] = $contractCategory->create($request->file('image'));
+        }
+
+        $category = $category->fill($validated);
 
         if ($category->save()) {
             return redirect()->route('categories.index')->with('success', 'Запись успешно сохранена');

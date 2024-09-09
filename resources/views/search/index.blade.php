@@ -5,7 +5,7 @@
 @section('content')
 <div class="search_block">
     <h1 class="title_search">Результаты запроса</h1>
-    @if ($posts === false)
+    @if (count($posts) === 0)
         <p>По вашему запросу результатов нет</p>
     @else
         @foreach($posts as $post)

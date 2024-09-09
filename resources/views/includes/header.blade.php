@@ -16,7 +16,8 @@
                         <h3>{{ $category->title }}</h3>
                         <p>{{ $category->description }}</p>
                     </div>
-                    <img src="{{ asset($category->image) }}" alt="" width="2917" height="1710">
+                    <img src="{{ Storage::disk('public')->url($category->image) }}" alt="category" width="2917" height="1710">
+
                 </div>
                 <a href="{{ route('category.show', ['category' => $category->id]) }}" class="btn">Вперед</a>
             </div>

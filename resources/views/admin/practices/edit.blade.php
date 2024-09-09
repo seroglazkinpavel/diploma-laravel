@@ -30,8 +30,9 @@
                 <label for="image">Изображение</label>
                 <input type="file" class="form-control" name="image" id="image">
             </div>
-            <br>
+
+            <button type="submit" class="btn btn-success">Save</button>
         </form>
-        <button type="submit" class="btn btn-success">Save</button>
+
     </div>
 @endsection

@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+
+@section('page.title', 'Список новостей')
+
 @section('content')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Список новостей</h1>
@@ -28,6 +31,7 @@
               <th scope="col">#</th>
               <th scope="col">Категория</th>
               <th scope="col">Заголовок</th>
+              <th scope="col">Содержание</th>
               <th scope="col">Автор</th>
               <th scope="col">Статус</th>
               <th scope="col">Дата добавления</th>
@@ -41,6 +45,7 @@
                 <td>{{ $post->category->title }}</td>
                 {{--<td>{{ $categories[$post->category_id-1]['title'] }}</td>--}}
                 <td>{{ $post->title }}</td>
+                <td>{{ $post->description }}</td>
                 <td>{{ $post->author }}</td>
                 <td>{{ $post->status }}</td>
                 <td>{{ $post->created_at }}</td>

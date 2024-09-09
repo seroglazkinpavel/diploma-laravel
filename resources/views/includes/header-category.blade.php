@@ -13,16 +13,15 @@
                     </p>
                 </div>
                 <div class="container">
-{{--                    <div class="slide-container-category">--}}
-                        <div class="slide">
-                            <div class="content">
-                                <h3>{{ $cat->title }}</h3>
-                                <p>{{ $cat->description }}</p>
 
-                            </div>
-                            <img src="{{ asset($cat->image) }}" alt="">
+                    <div class="slide">
+                        <div class="content">
+                            <h3>{{ $cat->title }}</h3>
+                            <p>{{ $cat->description }}</p>
                         </div>
-{{--                    </div>--}}
+                        <img src="{{ Storage::disk('public')->url($cat->image) }}" alt="category">
+                    </div>
+
                 </div>
             @endif
         @endforeach

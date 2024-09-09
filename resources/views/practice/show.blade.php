@@ -18,7 +18,11 @@
             <div class="block-homework">
                 {!! $exercise->homework !!}
             </div>
-            <button class="collapsible">Решения {{ $exercise->id }} задачи</button>
+            @if ($exercise->image === Null)
+                <button class="collapsible">Решается самостоятельно</button>
+            @else
+                <button class="collapsible">Решения задачи</button>
+            @endif
             <div class="block-collapsible">
                 <img src="{{ asset($exercise->image) }}" alt="">
             </div>
@@ -33,15 +37,6 @@
                  <strong>{{ session('error') }}</strong>
             </div>
         @endif
-{{--        @if ($errors->any())--}}
-{{--            <div class="alert alert-danger" role="alert">--}}
-{{--                <ul>--}}
-{{--                    @foreach ($errors->all() as $error)--}}
-{{--                        <li>{{ $error }}</li>--}}
-{{--                    @endforeach--}}
-{{--                </ul>--}}
-{{--            </div>--}}
-{{--        @endif--}}
 
         @auth()
         <div class="button">

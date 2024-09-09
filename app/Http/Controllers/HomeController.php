@@ -67,6 +67,7 @@ class HomeController extends Controller
 //            'posts_id' => ['required', 'integer', 'exists:posts,id'],
 //            'message' => ['required', 'string', 'max:500'],
 //        ]);
+//        dd($request);
 //        dd($data);
         $data = $request->only(['post_id', 'message']);
         $data['user_id'] = auth()->user()->id;
@@ -103,5 +104,5 @@ class HomeController extends Controller
 //    public function like()
 //    {
 //        return view('home.like');
-//    }
+//    }/diploma-laravel/vendor/symfony/var-dumper/Dumper/HtmlDumper.php
 }

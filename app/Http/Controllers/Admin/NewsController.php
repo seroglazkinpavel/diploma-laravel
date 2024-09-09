@@ -24,14 +24,14 @@ class NewsController extends Controller
      */
     public function index(Request $request): View
     {
-        //dd(Post::query()->with('category'));
+        $newsList = Post::query()
+            ->status()
+            ->with('category')  //дай мне  новости с категории
+            //->simplePaginate(),
+            ->paginate(7);
         return view('admin.news.index', [
 //            'newsList' => Post::all(),
-            'newsList' => Post::query()
-                ->status()
-                ->with('category')  //дай мне  новости с категории
-               //->simplePaginate(),
-                ->paginate(7),
+            'newsList' => $newsList,
             'categories' => Category::all(),
         ]);
     }
@@ -83,11 +83,15 @@ class NewsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Edit $request, Post $post)
+    public function update(Create $request, Post $post)
     {
+//        dd($request);
+//        $post->fill($request->validated());
         $post = $post->fill($request->validated());  //fill-заполнять
+
+
 //        if ($request->hasFile('image')) {
-//            $file = $request->file('image');
+//            $file = $request->file('image'); // получение файла
 //
 //            // файл пользователя расширение и имя
 //            $extension = $file->getClientOriginalExtension();

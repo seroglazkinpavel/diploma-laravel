@@ -1,37 +1,3 @@
-{{--@extends('layouts.base')--}}
-
-{{--@section('page.title', $title->title)--}}
-
-{{--@section('content')--}}
-{{--    <section class="reviews">--}}
-{{--        <hr>--}}
-{{--        <h1 class="reviews-title">Отзывы-цитаты</h1>--}}
-{{--        <div class="form-reviews">--}}
-{{--            @if($errors->any())--}}
-{{--                @foreach($errors->all() as $error)--}}
-{{--                    <x-alert :message="$error" type="danger"></x-alert>--}}
-{{--                @endforeach--}}
-{{--            @endif--}}
-{{--            <form method="post" action=""  class="form_login" enctype="multipart/form-data">--}}
-{{--                @csrf--}}
-{{--                <p>--}}
-{{--                    <label for="author">Имя</label>--}}
-{{--                    <input type="text" class="form-control" name="author" id="author" value="">--}}
-{{--                </p>--}}
-{{--                <p>--}}
-{{--                    <label for="image">Изображение</label>--}}
-{{--                    <input type="file" class="form-control" name="image" id="image">--}}
-{{--                </p>--}}
-{{--                <p>--}}
-{{--                    <label for="description">Комментарий</label>--}}
-{{--                    <textarea class="form-control" name="description" id="description"></textarea>--}}
-{{--                </p>--}}
-{{--                <button type="submit" class="btn">Save</button>--}}
-{{--            </form>--}}
-{{--        </div>--}}
-{{--    </section>--}}
-{{--@endsection--}}
-
 @extends('layouts.base')
 
 @section('page.title', 'Отзывы')

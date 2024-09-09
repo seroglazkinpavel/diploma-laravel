@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Services\CategoryService;
+use App\Services\Contracts\ContractCategory;
 use App\Services\Contracts\Upload;
 use App\Services\UploadService;
 use Illuminate\Support\ServiceProvider;
@@ -15,6 +17,7 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind(Upload::class, UploadService::class);
+        $this->app->bind(ContractCategory::class, CategoryService::class);
     }
 
     /**

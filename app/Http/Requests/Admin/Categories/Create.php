@@ -24,6 +24,7 @@ class Create extends FormRequest
         return [
             'title' => ['required', 'string', 'min:3', 'max:150'],
             'description' => ['nullable', 'string'],
+            'information' => ['nullable', 'string'],
             'image' => ['nullable', 'image'],
         ];
     }

@@ -13,7 +13,7 @@
                 <x-alert :message="$error" type="danger"></x-alert>
             @endforeach
         @endif
-        <form method="post" action="{{ route('news.update', ['post' => $post]) }}" enctype="multipart/form-data">
+        <form method="post" action="{{ route('news.update', ['post' => $post]) }}">
             @csrf
             @method('PUT')
             <div class="form-group mb-3">
@@ -49,8 +49,8 @@
                 <textarea class="form-control" name="description" id="description">{{ $post->description }}</textarea>
             </div>
             <br>
-
+            <button type="submit" class="btn btn-success">Save</button>
         </form>
-        <button type="submit" class="btn btn-success">Save</button>
+
     </div>
 @endsection

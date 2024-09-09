@@ -42,36 +42,16 @@
                             <p class="category-course-paragraph">Пишем коментарии к урокам</p>
                         </div>
                     </div>
-
                     <h2 class="category-course-title">Краткая информация</h2>
                     <h4 class="category-course-homework">Домашнее задание</h4>
                     <p class="category-course-paragraph-homework">К каждому уроку курса есть домашнее задание, которое вы должны сделать для закрепления полученных знаний. Ссылки находятся в разделе с названием содержания программы. Есть готовые решения к каждой задачи. Для проверки усвоенного материала проходите тысты.</p>
                     <h4 class="category-course-homework">Помощь</h4>
                     <p class="category-course-paragraph-homework">Все вопросы можно задавать в меню сайта "контакты". К каждому уроку имеются комментарии.</p>
                     {!! $cat->information !!}
-{{--                    <h4 class="category-course-homework">Несколько вступительных слов о Javascript</h4>--}}
-
-{{--                    <p class="category-course-paragraph-homework">JavaScript один из основных, входящих в топ-10, языков программирования. У пользователя появляется больше возможностей--}}
-                    {{--                        взаимодействовать с web-страницей.</p><p class="category-course-paragraph-homework">С помощью Javascript web-страница, при взаимодействии с пользователем, из статичной становится интерактивной.</p>--}}
-                    {{--                    <p class="category-course-paragraph-homework">JavaScript и Java это разные языки программирования и их не стоит путать.</p>--}}
-                    {{--                    <p class="category-course-paragraph-homework">С преобретением знаний вы сможете программировать на страницах не шаблонное, а абсолютно новое--}}
-                    {{--                        отображение реакций на действия пользователя.</p><p class="category-course-paragraph-homework">В HTML5 JavaScript стал стандартным языком сценариев и поддерживается всеми современными браузерами.</p>--}}
-                    {{--                    <p class="category-course-paragraph-homework">Помимо фронтендной части сайта (того что мы видим в браузере), Javascript можно использовать как серверный язык. Для этого используется  плотформа node.js.</p>--}}
                 </div>
             </div>
             @endif
             @endforeach
-{{--            <ul class="category-course-list">--}}
-{{--                <h2 class="title-sidebar-right"><strong>Содерхание программы</strong></h2>--}}
-{{--                @foreach($posts as $post)--}}
-{{--                    <li class="category-course-item">--}}
-{{--                        <a class="category-nav-link @if(request()->routeIs('home.*', $post->id)) active @endif" href="{{ route('home.show', $post->id) }}">{{ $post->title }}</a>--}}
-{{--                    </li>--}}
-{{--                    <div class="practice-lesson">--}}
-{{--                        <a href="{{ route('practice.show', $post->id) }}"><strong>Практика</strong></a>--}}
-{{--                    </div>--}}
-{{--                @endforeach--}}
-{{--            </ul>--}}
             <h2 class="title-course"><strong>Содерхание программы</strong></h2>
             <ul class="course-list">
                 @foreach($posts as $item)
@@ -80,13 +60,7 @@
                     </li>
                     <div class="practice">
                         <p>Практика</p>
-{{--                        @if (!empty($practice->posts_id))--}}
-{{--                            <a href="{{ route('practice.show', $practice->posts_id) }}">Практика</a>--}}
-{{--                        @else--}}
-{{--                            <p>Практика в разработке</p>--}}
-{{--                        @endif--}}
                     </div>
-
                 @endforeach
             </ul>
         </div>
@@ -95,24 +69,18 @@
 @endsection
 @push('css')
     <style>
-        .course-list-none {
-            display: none
-        }
         .active {
             color: #9c9c9c;
         }
         .lesson-course-category {
-            /*margin-top: 100px;*/
             margin-bottom: 80px;
         }
         .lesson-course-category hr {
             margin-bottom: 10px;
         }
         .category-course-title {
-            font-family: Montserrat;
             font-size: 24px;
             text-align: center;
-            color: #082838;
             margin-bottom: 30px;
         }
 
@@ -127,29 +95,19 @@
         }
         .category-course-item-title {
             text-transform: uppercase;
-            font-family: Montserrat;
             text-align: center;
-            color: #082838;
         }
         .category-course-paragraph {
-            font-family: Montserrat;
             text-align: center;
             color: #828383;
         }
         .category-course-homework {
-            font-family: Montserrat;
-            color: #082838;
-            /*font-size: 18px;*/
             margin-top: 15px;
         }
         .category-course-paragraph-homework {
-            font-family: Montserrat;
             color: #828383;
         }
-        .practice-lesson {
-            font-family: Montserrat;
-            color: #828383;
-        }
+
         .category-img-lesson:hover {
             background: url('../images/lesson_1.png') no-repeat;
             background-size: 100%;
@@ -173,16 +131,6 @@
             .category-course-content-item {
                 width: 45%;
             }
-            /*.category-course-list {*/
-            /*    display: none;*/
-            /*}*/
-            /*.course-list-none {*/
-            /*    display: flex;*/
-            /*    !*overflow-x: auto;*!*/
-            /*}*/
-            /*.category-course {*/
-            /*    flex-direction: column;*/
-            /*}*/
         }
     </style>
 @endpush
