@@ -17,6 +17,7 @@
                 <th scope="col">Название урока</th>
                 <th scope="col">Задачи</th>
                 <th scope="col">Изображение</th>
+                <th scope="col">Решение</th>
                 <th scope="col">Дата добавления</th>
                 <th scope="col">Действия</th>
             </tr>
@@ -28,6 +29,7 @@
                     <td>{{ $practice->post->title }}</td>
                     <td>{{ $practice->homework }}</td>
                     <td>{{ $practice->image }}</td>
+                    <td>{{ $practice->decision }}</td>
                     <td>{{ $practice->created_at }}</td>
                     <td>
                         <a href="{{ route('practices.edit', ['practice' => $practice]) }}">

@@ -25,6 +25,7 @@ class Create extends FormRequest
             'posts_id' => ['required', 'integer', 'exists:posts,id'],
             'homework' => ['nullable', 'string'],
             'image' => ['nullable', 'image'],
+            'decision' => ['nullable', 'string'],
         ];
     }
 }

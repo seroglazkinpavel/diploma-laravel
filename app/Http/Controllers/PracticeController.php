@@ -61,7 +61,7 @@ class PracticeController extends Controller
         $data['radio'] = $request->payment;
         $data['message'] = $request->message;
         $estimation = new Estimation($data);
-        if($estimation->getAttribute('option') === null and $estimation->getAttribute('radio') === null) {
+        if($estimation->getAttribute('option') === null or $estimation->getAttribute('radio') === null) {
             return redirect()->route('practice.show', $post->id)->with('error', 'Не дали оценку!');
         }
 //        if (Estimation::create($data)) {

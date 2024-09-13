@@ -17,6 +17,7 @@ class Practice extends Model
         'posts_id',
         'homework',
         'image',
+        'decision',
     ];
 
     // Обратная связь

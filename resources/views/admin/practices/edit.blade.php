@@ -30,7 +30,10 @@
                 <label for="image">Изображение</label>
                 <input type="file" class="form-control" name="image" id="image">
             </div>
-
+            <div class="form-group mb-3">
+                <label for="decision">Решение</label>
+                <input type="text" class="form-control" name="decision" id="decision" value="{{ $practice->decision }}">
+            </div>
             <button type="submit" class="btn btn-success">Save</button>
         </form>
 

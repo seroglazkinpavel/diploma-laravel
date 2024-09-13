@@ -18,11 +18,16 @@
             <div class="block-homework">
                 {!! $exercise->homework !!}
             </div>
-            @if ($exercise->image === Null)
+            @if ($exercise->image === Null AND $exercise->decision === Null)
                 <button class="collapsible">Решается самостоятельно</button>
+{{--            @elseif (empty($exercise->decision))--}}
+{{--                <button class="collapsible">Решения задачи</button>--}}
             @else
                 <button class="collapsible">Решения задачи</button>
             @endif
+            <div class="block-collapsible">
+                {!! $exercise->decision !!}
+            </div>
             <div class="block-collapsible">
                 <img src="{{ asset($exercise->image) }}" alt="">
             </div>
@@ -112,6 +117,16 @@
 @endsection
 @push('css')
     <style>
+        /*table {*/
+        /*    margin-top: 10px;*/
+        /*    margin-bottom: 10px;*/
+        /*}*/
+
+        /*table,*/
+        /*tr > * {*/
+        /*    border: 1px solid;*/
+        /*    padding: 7px;*/
+        /*}*/
         .block-homework {
             margin-top: 15px;
         }
