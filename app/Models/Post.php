@@ -50,18 +50,6 @@ class Post extends Model
         return $query;
     }
 
-//    protected $table = 'posts';
-//
-//    public function getAll(): Collection
-//    {
-//        return DB::table($this->table)->get();
-//    }
-//
-//    public function getItemById(int $id): mixed
-//    {
-//        return DB::table($this->table)->find($id);
-//    }
-
     // Обратная связь
     public function category(): BelongsTo
     {
@@ -75,8 +63,6 @@ class Post extends Model
      */
     public function toSearchableArray()
     {
-        //$array = $this->toArray();
-
         return [
             'title' => $this->title,
             'author' => $this->author,

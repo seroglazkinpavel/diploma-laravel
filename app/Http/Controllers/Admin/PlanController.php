@@ -18,9 +18,6 @@ class PlanController extends Controller
      */
     public function index(Request $request)
     {
-//        dd(Plan::query()
-//            ->with('post')  //дай мне  план с поста
-//            ->get());
         return view('admin.plans.index', [
             'plansList' => Plan::query()
                 ->with('post')  //дай мне  план с поста
@@ -31,21 +28,11 @@ class PlanController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Request $request)
+    public function create()
     {
-        //dd(Post::query()->with('category'));
-        //dd(Post::query()->where('category_id', 2)->pluck('title'));
-        //$cat = app(Category::class);
-        //$cats = new Category();
-        //$posts = $category->getCategoryItemById(2);
-        //dd($posts->pluck('title'));
-        //dd(Category::all());
         return view('admin.plans.create', [
-            'categories' => Category::all(),
-//            //'cats' => $cats,
-//            'posts' => Post::query()
-//                ->with('category')
-            //'posts' => Post::all(),
+//            'categories' => Category::all(),
+            'posts' => Post::all(),
         ]);
     }
 
@@ -77,7 +64,7 @@ class PlanController extends Controller
     {
         //$categories = Category::all();
         return view('admin.plans.edit', [
-            'categories' => Category::all(),
+            'posts' => Post::all(),
             'plan' => $plan,
         ]);
     }

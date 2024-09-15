@@ -11,18 +11,15 @@ class CategoryController extends Controller
 {
     public function show($category, Post $post)
     {
-        //dd($category);
         $posts_category = app(Category::class);
         $posts = DB::table('posts')
             ->where('category_id', $category)
             ->get();
         $category_id = $posts->first()->category_id;
-        //dd($category_id);
         $title = $posts_category->getCategoryTitle($category)[0];
         $categories = Category::all();
         $practice = DB::table('practice')->where('posts_id', $post)->first();
         return view('category.show', [
-            //'posts' => $posts_category->getCategoryItemById($category),
             'posts' => $posts,
             'categories' => $categories,
             'category_id' => $category_id,
@@ -30,9 +27,4 @@ class CategoryController extends Controller
             'practice' => $practice,
         ]);
     }
-
-//    public function show($category, $post)
-//    {
-//
-//    }
 }

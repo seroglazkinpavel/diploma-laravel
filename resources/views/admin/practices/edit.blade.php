@@ -19,9 +19,20 @@
             @method('PUT')
 
             <div class="form-group mb-3">
-                <label for="posts_id">posts_id урока</label>
-                <input type="number" class="form-control" name="posts_id" id="posts_id" value="{{ $practice->posts_id }}">
+                <label for="posts_id">Урок</label>
+                <select class="form-control" name="posts_id" id="posts_id">
+                    @foreach($posts as $post)
+                        <option value="{{ $post->id }}" @if($post->id === $practice->posts_id) selected @endif>
+                            {{ $post->title }}
+                        </option>
+                    @endforeach
+                </select>
             </div>
+
+{{--            <div class="form-group mb-3">--}}
+{{--                <label for="posts_id">posts_id урока</label>--}}
+{{--                <input type="number" class="form-control" name="posts_id" id="posts_id" value="{{ $practice->posts_id }}">--}}
+{{--            </div>--}}
             <div class="form-group mb-3">
                 <label for="homework">Задача</label>
                 <input type="text" class="form-control" name="homework" id="homework" value="{{ $practice->homework }}">

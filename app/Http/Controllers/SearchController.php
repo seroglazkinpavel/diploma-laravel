@@ -25,15 +25,4 @@ class SearchController extends Controller
 
         ]);
     }
-
-    public function internship(Request $request): View
-    {
-        $practices = Practice::search($request->search ?? '')->get();
-        dd($practices);
-        //dd(Practice::query()->with('post')->get());
-        return view('search.internship', [
-            'practices' => $practices,
-            'title' => Practice::query()->with('post')->get('title'),
-        ]);
-    }
 }

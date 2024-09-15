@@ -13,10 +13,12 @@ class ReviewController extends Controller
 {
     public function index(): View
     {
-//        $messages = $request->messages();
+        $reviewList = Review::query()
+            ->paginate(1);
         return view('reviews.index', [
             'categories' => Category::all(),
             'reviews' => Review::all(),
+            'reviewList' => $reviewList,
         ]);
     }
 

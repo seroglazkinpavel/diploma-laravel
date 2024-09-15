@@ -1,10 +1,7 @@
 <?php
 
-//use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FeedbackController;
-use App\Http\Controllers\LessonController;
 use App\Http\Controllers\LoginController;
-//use App\Http\Controllers\MenuController;
 use App\Http\Controllers\PracticeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReviewController;
@@ -44,12 +41,10 @@ Route::post('home/{post}/estimation', [HomeController::class, 'estimation'])->na
 
 Route::get('category/{category}', [CategoryController::class, 'show'])->name('category.show');
 
-//Route::get('menu/contacts', [MenuController::class, 'index'])->name('menu.contact');
 Route::get('/feedback', [FeedbackController::class, 'index'])->name('feedback.index');
 Route::post('/feedback', [FeedbackController::class, 'send'])->name('feedback.send');
 
 Route::get('search', [SearchController::class, 'index'])->name('search');
-Route::get('internship', [LessonController::class, 'internship'])->name('internship');
 
 Route::get('practice/{post}', [PracticeController::class, 'show'])->name('practice.show');
 Route::post('practice/{post}/estimation', [PracticeController::class, 'estimation'])->name('practice.estimation');
@@ -57,24 +52,6 @@ Route::post('practice/{post}/estimation', [PracticeController::class, 'estimatio
 Route::get('reviews', [ReviewController::class, 'index'])->name('reviews');
 Route::post('reviews/store', [ReviewController::class, 'store'])
     ->name('reviews.store');
-
-//Route::group(['prefix' => 'admin', 'as' => 'admin.'], static function () {
-//    Route::get('/categories', [AdminCategoryController::class, 'index'])
-//        ->name('categories.index');
-//    Route::get('/news', [AdminNewsController::class, 'index'])
-//        ->name('news.index');
-//    Route::get('/', AdminController::class)->name('index');
-//    Route::get('/news/create', [AdminNewsController::class, 'create'])
-//        ->name('news.create');
-//    Route::post('/news/store', [AdminNewsController::class, 'store'])
-//        ->name('news.store');
-//    Route::get('/news/{post}/edit', [AdminNewsController::class, 'edit'])
-//        ->name('news.edit');
-//    Route::put('/news/{post}/update', [AdminNewsController::class, 'update'])
-//        ->name('news.update');
-//    Route::delete('news/{news}', [AdminNewsController::class, 'destroy'])->name('news.destroy');
-//    Route::get('/news/{id}', [AdminNewsController::class, 'show']);
-//});
 
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/categories', [AdminCategoryController::class, 'index'])
@@ -111,8 +88,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
         ->name('practices.edit');
     Route::put('/practices/{practice}/update', [AdminPracticeController::class, 'update'])
         ->name('practices.update');
-    Route::put('/test', [AdminPracticeController::class, 'test'])
-        ->name('test.test');
+    Route::delete('practices/{practice}', [AdminPracticeController::class, 'destroy'])
+        ->name('practices.destroy');
 
     Route::get('/news', [AdminNewsController::class, 'index'])
         ->name('news.index');
@@ -130,6 +107,15 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
 
     Route::get('/comment', [AdminCommentController::class, 'index'])
         ->name('comment.index');
+    Route::get('/comment/create', [AdminCommentController::class, 'create'])
+        ->name('comment.create');
+    Route::post('/comment/store', [AdminCommentController::class, 'store'])
+        ->name('comment.store');
+    Route::get('/comment/{comment}/edit', [AdminCommentController::class, 'edit'])
+        ->name('comment.edit');
+    Route::put('/comment/{comment}/update', [AdminCommentController::class, 'update'])
+        ->name('comment.update');
+    Route::delete('comment/{comment}', [AdminCommentController::class, 'destroy'])->name('comment.destroy');
 });
 
 Route::post('/logout', [loginController::class, 'destroy'])->middleware('auth')->name('logout');

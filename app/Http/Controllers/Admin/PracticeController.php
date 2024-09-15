@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Practices\Create;
 use App\Http\Requests\Admin\Practices\Edit;
+use App\Models\Post;
 use App\Models\Practice;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class PracticeController extends Controller
@@ -15,9 +17,6 @@ class PracticeController extends Controller
      */
     public function index()
     {
-//        dd(Practice::query()
-//            ->with('post')
-//            ->get());
         return view('admin.practices.index', [
             'practices' => Practice::query()
                 ->with('post')
@@ -31,7 +30,9 @@ class PracticeController extends Controller
      */
     public function create()
     {
-        return view('admin.practices.create');
+        return view('admin.practices.create', [
+            'posts' => Post::all(),
+        ]);
     }
 
     /**
@@ -60,9 +61,8 @@ class PracticeController extends Controller
      */
     public function edit(Practice $practice)
     {
-        //$categories = Category::all();
         return view('admin.practices.edit', [
-            //'categories' => Category::all(),
+            'posts' => Post::all(),
             'practice' => $practice,
         ]);
     }
@@ -83,8 +83,14 @@ class PracticeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Practice $practice)
+    public function destroy(Practice $practice):JsonResponse
     {
-        //
+        try{
+            $practice->delete();
+            return response()->json('ok');
+        } catch (\Exception $e) {
+            \log::error($e->getMessage(), $e->getTrace());
+            return response()->json('error', 400);
+        }
     }
 }

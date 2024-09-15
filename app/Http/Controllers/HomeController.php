@@ -16,14 +16,6 @@ class HomeController extends Controller
 {
     public function index(): VIew
     {
-//        $post = app(Post::class);
-//        $category = app(Category::class);
-//
-//        return view('home.index', [
-//            'posts' => $post->getAll(),
-//            'categories' => $category->getCategoryAll(),
-//        ]);
-        //dd(Plan::all());
         return view('home.index', [
             'plans' => Plan::all(),
             'posts' => Post::inRandomOrder()->limit(8)->get(),
@@ -62,18 +54,10 @@ class HomeController extends Controller
 
     public function comment(Post $post, Request $request)
     {
-        // Валидация полей формы
-//        $data = $request->validate([
-//            'posts_id' => ['required', 'integer', 'exists:posts,id'],
-//            'message' => ['required', 'string', 'max:500'],
-//        ]);
-//        dd($request);
-//        dd($data);
         $data = $request->only(['post_id', 'message']);
         $data['user_id'] = auth()->user()->id;
         $data['post_id'] = $post->id;
-//        Comment::create($data);
-//        return redirect()->route('home.show', $post->id);
+
         $comment = new Comment($data);
         if ($comment->getAttribute('message') === null) {
             return redirect()->route('home.show', $post->id)->with('error-comment', 'Не добавили комментарий!');
@@ -86,7 +70,6 @@ class HomeController extends Controller
 
     public function estimation(Post $post, Request $request)
     {
-
         $data['user_id'] = auth()->user()->id;
         $data['post_id'] = $post->id;
         $data['option'] = $request->mySelect;

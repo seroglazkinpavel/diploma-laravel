@@ -7,7 +7,7 @@
         <h1 class="h2">Список комментарий</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
-                <a href="{{ route('categories.create') }}" type="button" class="btn btn-sm btn-outline-secondary">Добавить комментарий</a>
+                <a href="{{ route('comment.create') }}" type="button" class="btn btn-sm btn-outline-secondary">Добавить комментарий</a>
             </div>
         </div>
     </div>
@@ -37,9 +37,9 @@
                     <td>{{ $comment->message }}</td>
                     <td>{{ $comment->created_at }}</td>
                     <td>
-                        <a href="">
+                        <a href="{{ route('comment.edit', ['comment' => $comment->id]) }}">
                             Edit</a> &nbsp;
-                        <a href="javascript:;" class="delete" rel="">
+                        <a href="javascript:;" class="delete" rel="{{  $comment->id }}">
                             Delete
                         </a>
                     </td>
@@ -66,7 +66,7 @@
                 element.addEventListener('click', function() {
                     const id = this.getAttribute('rel');
                     if (confirm(`Подтверждаете удаление записи с #ID = ${id}`)) {
-                        send(`/admin/categories/${id}`).then( () => {
+                        send(`/admin/comment/${id}`).then( () => {
                             location.reload();
                         });
                     } else {

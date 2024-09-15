@@ -13,34 +13,24 @@
                 <x-alert :message="$error" type="danger"></x-alert>
             @endforeach
         @endif
-{{--            @foreach($categories as $category)--}}
-
-{{--                <option value="{{ $category->id }}" @if($category->id === old('category_id')) selected @endif>--}}
-{{--                @foreach($posts as $post)--}}
-{{--                    <p>{{ $post->where('category_id', $category->id)->pluck('title') }}</p>--}}
-{{--                @endforeach--}}
-{{--                </option>--}}
-{{--            @endforeach--}}
         <form method="post" action="{{ route('plans.store') }}">
             @csrf
-{{--            <div class="form-group mb-3">--}}
-{{--                <label for="category_id">Название урока</label>--}}
-{{--                <select class="form-control" name="category_id" id="category_id">--}}
-{{--                    @foreach($categories as $category)--}}
-
-{{--                        <option value="{{ $category->id }}" @if($category->id === old('category_id')) selected @endif>--}}
-{{--                            @foreach($posts as $post)--}}
-{{--                                {{ $posts }}--}}
-{{--                            @endforeach--}}
-{{--                        </option>--}}
-{{--                    @endforeach--}}
-{{--                </select>--}}
-{{--            </div>--}}
 
             <div class="form-group mb-3">
-                <label for="posts_id">posts_id урока</label>
-                <input type="number" class="form-control" name="posts_id" id="posts_id" value="{{ old('posts_id') }}">
+                <label for="posts_id">Урок</label>
+                <select class="form-control" name="posts_id" id="posts_id">
+                    @foreach($posts as $post)
+                        <option value="{{ $post->id }}" @if($post->id === old('posts_id')) selected @endif>
+                            {{ $post->title }}
+                        </option>
+                    @endforeach
+                </select>
             </div>
+
+{{--            <div class="form-group mb-3">--}}
+{{--                <label for="posts_id">posts_id урока</label>--}}
+{{--                <input type="number" class="form-control" name="posts_id" id="posts_id" value="{{ old('posts_id') }}">--}}
+{{--            </div>--}}
             <div class="form-group mb-3">
                 <label for="title">Заголовок</label>
                 <input type="text" class="form-control" name="title" id="title" value="{{ old('title') }}">

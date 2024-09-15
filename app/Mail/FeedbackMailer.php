@@ -21,23 +21,6 @@ class FeedbackMailer extends Mailable
         $this->data = $feedback;
     }
 
-//    // Создаем сообщение
-//    public function build() {
-//        // От кого письмо
-////        return $this->from('noreply@aurora.com', 'ООО ТД АВРОРА')
-//            // Тема письма
-//        return $this->subject('Форма обратной связи')
-//            // Вызываем представление и передаем объект data с данными
-//            ->view('email.feedback', ['data' => $this->data]);
-//    }
-//    /**
-//     * Create a new message instance.
-//     */
-//    public function __construct()
-//    {
-//        //
-//    }
-
     /**
      * Get the message envelope.
      */

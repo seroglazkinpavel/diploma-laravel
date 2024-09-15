@@ -1,5 +1,5 @@
 @if ($paginator->hasPages())
-    <nav aria-label="Page navigation example">
+    <nav class="center" aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
             @if ($paginator->onFirstPage())
                 <li class="page-item disabled">
@@ -48,3 +48,43 @@
         </ul>
     </nav>
 @endif
+
+
+
+
+    <style>
+        ul.pagination {
+            display: inline-block;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        ul.pagination li {display: inline;}
+
+        ul.pagination li a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+            border: 1px solid #ddd;
+        }
+
+        ul.pagination li a.active {
+            background-color: #4CAF50;
+            color: white;
+            border: 1px solid #4CAF50;
+        }
+
+        ul.pagination li a:hover:not(.active) {background-color: #ddd;}
+
+
+    </style>
+
+
+
+
+
+
+

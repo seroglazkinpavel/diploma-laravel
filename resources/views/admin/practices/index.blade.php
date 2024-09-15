@@ -52,17 +52,13 @@
 @push('js')
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            let filter = document.getElementById("filter");
-            filter.addEventListener("change", function (event) {
-                location.href = "?f=" + this.value;
-            });
 
             let elements = document.querySelectorAll(".delete");
             elements.forEach(function (element, key) {
                 element.addEventListener('click', function() {
                     const id = this.getAttribute('rel');
                     if (confirm(`Подтверждаете удаление записи с #ID = ${id}`)) {
-                        send(`/admin/news/${id}`).then( () => {
+                        send(`/admin/practices/${id}`).then( () => {
                             location.reload();
                         });
                     } else {

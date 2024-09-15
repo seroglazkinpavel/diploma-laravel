@@ -21,11 +21,6 @@ class Category extends Model
         'image',
     ];
 
-//    public function getCategoryAll(): Collection
-//    {
-//        return DB::table($this->table)->get();
-//    }
-
     public function getCategoryItemById($category): mixed
     {
         return DB::table('posts')

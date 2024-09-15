@@ -24,7 +24,6 @@
                         @else
                             <p class="title-course">Курс по PHP</p>
                         @endif
-{{--                        <div class="plan">--}}
                             <p class="title-plan">План урока</p>
                             <ul class="list-plan">
                                 @foreach($plans as $plan)
@@ -33,14 +32,10 @@
                                     @endif
                                 @endforeach
                             </ul>
-{{--                        </div>--}}
-{{--                        <div class="">--}}
                             <h5 >
                                 <a href="{{ route('home.show', $post->id) }}">{{ $post->title }}</a>
                             </h5>
                             <p>Дата: {{ $post->created_at }}</p>
-
-{{--                        </div>--}}
                     </div>
                 @endforeach
             @endif
@@ -52,8 +47,6 @@
     <style>
 /* Start План урока */
     .post-course-item {
-        /*background:#b3d9a8;*/
-        /*background:#5ccccc;*/
         background:#DDE3DE;
         padding: 15px;
         box-sizing: border-box;
@@ -61,8 +54,6 @@
     .plan {
         background:#b3d9a8;
         padding: 15px;
-        /*width: 30%;*/
-        /*float : left;*/
         margin-right: 15px;
     }
     .title-course {
@@ -73,7 +64,6 @@
         text-align: center;
     }
     .list-plan {
-        /*list-style-type: circle;*/
         list-style-type: decimal;
         padding-left: 25px;
     }

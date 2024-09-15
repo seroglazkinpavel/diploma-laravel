@@ -30,6 +30,7 @@
                         </div>
                     </div>
                 @endforeach
+                {{ $reviewList->links() }}
             </div>
             @if($errors->any())
                 @foreach($errors->all() as $error)
@@ -55,6 +56,7 @@
                 </fieldset>
             </div>
     </div>
+
     </section>
 @endsection
 
@@ -90,5 +92,35 @@
             margin-left: 10px;
             margin-top: 10px;
         }
+        /* Start pagination */
+        .center {
+
+            text-align: center;
+        }
+        .pagination {
+            display: inline-block;
+            padding: 0;
+            margin: 0;
+
+        }
+
+        ul .pagination li {display: inline;}
+
+        ul .pagination li a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+            border: 1px solid #ddd;
+        }
+
+        /*ul .pagination li a.active {*/
+        /*    background-color: #4CAF50;*/
+        /*    color: white;*/
+        /*    border: 1px solid #4CAF50;*/
+        /*}*/
+
+        ul .pagination li a:hover:not(.active) {background-color: #ddd;}
     </style>
 @endpush
